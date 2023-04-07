@@ -5,11 +5,10 @@ from chat_gpt import ChatGPT
 
 def main():
     rospy.init_node("chat_gpt")
-    pub_synthesis = rospy.Publisher("google_speech/utterance", String, queue_size=10)
+    pub_synthesis = rospy.Publisher("jtalk/utterance", String, queue_size=10)
 
     apikey = open("apikey.txt").readline()
     personality_texts = ["あなたは猫です", "語尾に「にゃー」をつけて可愛くしゃべりなさい"]
-
     chat = ChatGPT(apikey, personality_texts)
 
     while not rospy.is_shutdown():
