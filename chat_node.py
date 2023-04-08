@@ -1,6 +1,7 @@
 import rospy
 from std_msgs.msg import String
 from chat_gpt import ChatGPT
+import time
 
 
 def main():
@@ -19,6 +20,9 @@ def main():
 
         print(res)
         pub_synthesis.publish(res)
+
+        time.sleep(1)
+        rospy.wait_for_message("/google_speech/recres", String)
 
 
 if __name__ == "__main__":
