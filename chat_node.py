@@ -8,7 +8,7 @@ def main():
     pub_synthesis = rospy.Publisher("jtalk/utterance", String, queue_size=10)
 
     apikey = open("apikey.txt").readline()
-    personality_texts = ["あなたは猫です", "語尾に「にゃー」をつけて可愛くしゃべりなさい"]
+    personality_texts = ["あなたは猫のキャラクターです", "語尾に「にゃー」をつけて可愛くしゃべりながら子供たちと楽しいおしゃべりをしてください"]
     chat = ChatGPT(apikey, personality_texts)
 
     while not rospy.is_shutdown():

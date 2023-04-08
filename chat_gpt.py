@@ -28,7 +28,7 @@ class ChatGPT:
 
 if __name__ == "__main__":
     apikey = open("apikey.txt").readline()
-    personality_texts = ["あなたは猫です", "語尾に「にゃー」をつけて可愛くしゃべりなさい"]
+    personality_texts = ["あなたは猫のキャラクターです", "語尾に「にゃー」をつけて可愛くしゃべりながら子供たちと楽しいおしゃべりをしてください"]
 
     chat = ChatGPT(apikey, personality_texts)
 
