@@ -9,8 +9,8 @@ def main():
     pub_synthesis = rospy.Publisher("jtalk/utterance", String, queue_size=10)
 
     apikey = open("apikey.txt").readline()
-    personality_texts = ["あなたは猫のキャラクターです", "語尾に「にゃー」をつけて可愛くしゃべりながら子供たちと楽しいおしゃべりをしてください"]
-    chat = ChatGPT(apikey, personality_texts)
+    role_texs = ["あなたは猫のキャラクターです", "語尾に「にゃー」をつけて可愛くしゃべりながら子供たちと楽しいおしゃべりをしてください"]
+    chat = ChatGPT(apikey, role_texs)
 
     while not rospy.is_shutdown():
         msg = rospy.wait_for_message("/google_speech/recres", String)

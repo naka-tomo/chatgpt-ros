@@ -3,17 +3,17 @@ import openai
 
 
 class ChatGPT:
-    def __init__(self, apikey, personality_texts):
+    def __init__(self, apikey, role_texs):
         openai.api_key = apikey
-        self.personality_texts = [
-            {"role": "system", "content": t} for t in personality_texts
+        self.role_texs = [
+            {"role": "system", "content": t} for t in role_texs
         ]
         self.history = []
 
     def request_responce(self, txt):
         self.history += [{"role": "user", "content": txt}]
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", messages=self.personality_texts + self.history
+            model="gpt-3.5-turbo", messages=self.role_texs + self.history
         )
 
         response = response.choices[0]["message"]["content"].strip()
@@ -28,9 +28,9 @@ class ChatGPT:
 
 if __name__ == "__main__":
     apikey = open("apikey.txt").readline()
-    personality_texts = ["あなたは猫のキャラクターです", "語尾に「にゃー」をつけて可愛くしゃべりながら子供たちと楽しいおしゃべりをしてください"]
+    role_texs = ["あなたは猫のキャラクターです", "語尾に「にゃー」をつけて可愛くしゃべりながら子供たちと楽しいおしゃべりをしてください"]
 
-    chat = ChatGPT(apikey, personality_texts)
+    chat = ChatGPT(apikey, role_texs)
 
     while 1:
         txt = input("->")
